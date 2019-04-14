@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import '../styles/reviewStyle.css';
 import moment from 'moment';
+import '../styles/reviewStyle.css';
 import UserEntry from './UserEntry.jsx';
 
 const ReviewEntry = ({

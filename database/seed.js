@@ -21,7 +21,6 @@ const seedUsernames = function seedUsernames() {
       max: 40,
     });
     const location = 'San Francisco';
-    // const location = faker.address.city().concat(', ', faker.address.stateAbbr());
     const vip = faker.random.boolean();
     Models.User.create({
       username, review_count, location, VIP: vip,
@@ -137,5 +136,3 @@ database.sql.sync({ force: true }).then(function() {
   seedReviews();
   seedReviewsHigher();
 });
-
-database.connection.end();
