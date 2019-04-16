@@ -18,7 +18,9 @@ app.use('/restaurants/:id', express.static(path.join(__dirname, '/../client/dist
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
 app.use(morgan('tiny'));
 
 app.get('/api/restaurants/:id/reviews', (req, res) => {
