@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "node database/index.js & node database/seed.js & node server/server.js",
+    "start": "node server/server.js",
     "react": "webpack -p",
     "server-dev": "nodemon server/server.js",
     "test": "jest",
@@ -63,14 +63,5 @@
     "webpack-dev-server": "^3.2.1"
   },
   "version": "1.0.0",
-  "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/opentabs/reviews.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/opentabs/reviews/issues"
-  },
-  "homepage": "https://github.com/opentabs/reviews#readme"
+  "main": ".eslintrc.js"
 }

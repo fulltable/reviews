@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   getReviews() {
-    fetch(`/api/restaurants/${this.state.restaurantId}/reviews`)
+    fetch(`/api/reviews/${this.state.restaurantId}/`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
@@ -69,7 +69,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <Route path="/api/restaurants/:id/reviews" component={ReviewList} />
+          <Route path="/api/reviews/:id/" component={ReviewList} />
           <RatingSummary
             reviews={this.state.reviews} 
             origReviews={this.state.origReviews}

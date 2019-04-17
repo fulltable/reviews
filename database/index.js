@@ -1,15 +1,14 @@
 const Sequelize = require('sequelize');
 const Promise = require('promise');
 
-let sql = new Sequelize('', 'root', '', {
-  host: '172.17.0.2',
-  dialect: 'mysql',
-});
+// let sql = new Sequelize('', 'root', '', {
+//   host: '172.17.0.2',
+//   dialect: 'mysql',
+// });
 
-sql.query('CREATE DATABASE IF NOT EXISTS`opentable_reviews`;').then(() => {});
+// sql.query('CREATE DATABASE IF NOT EXISTS`opentable_reviews`;').then(() => {});
 
-sql = new Sequelize('opentable_reviews', 'root', '', {
-  host: '172.17.0.2',
+let sql = new Sequelize('test_reviews', 'root', '', {
   dialect: 'mysql',
 });
 
