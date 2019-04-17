@@ -1,15 +1,13 @@
-const mysql = require('mysql');
 const faker = require('faker');
-// const Reviews = require('./Reviews');
-const database = require('./index.js');
+
+const db = require('./index.js');
 const Models = require('./Models');
 
 const seedRestaurants = function seedRestaurants() {
   for (let i = 0; i < 100; i += 1) {
     const restaurant_name = faker.lorem.word();
     Models.Restaurant.create({ restaurant_name })
-      .then(() => {
-      });
+      .catch(err => console.error(err));
   }
 };
 
@@ -23,10 +21,12 @@ const seedUsernames = function seedUsernames() {
     const location = 'San Francisco';
     const vip = faker.random.boolean();
     Models.User.create({
-      username, review_count, location, VIP: vip,
+      username,
+      review_count,
+      location,
+      VIP: vip,
     })
-      .then(() => {
-      });
+      .catch(err => console.error(err));
   }
 };
 
@@ -75,8 +75,7 @@ const seedReviews = function seedReviews() {
       review,
       user_recommended,
     })
-      .then(() => {
-      });
+      .catch(err => console.error(err));
   }
 };
 
@@ -125,14 +124,18 @@ const seedReviewsHigher = function seedReviewsHigher() {
       review,
       user_recommended,
     })
-      .then(() => {
-      });
+      .catch(err => console.error(err));
   }
 };
 
-database.sql.sync({ force: true }).then(function() {
-  seedRestaurants();
-  seedUsernames();
-  seedReviews();
-  seedReviewsHigher();
-});
+db.sync()
+  .then(() => {
+    seedRestaurants();
+    seedUsernames();
+    seedReviews();
+    seedReviewsHigher();
+  })
+  .catch((err) => {
+    console.error(err);
+    db.close();
+  });

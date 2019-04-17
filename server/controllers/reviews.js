@@ -1,7 +1,7 @@
 const Models = require('../../database/Models');
 
 module.exports = {
-  post: null,
+  post: //todo,
 
   get: function(req, res) {
     const { id } = req.params;
@@ -14,8 +14,8 @@ module.exports = {
       res.end();
     });
   },
-  
-  put: null,
 
-  delete: null,
+  put: //todo,
+
+  delete: //todo,
 }
