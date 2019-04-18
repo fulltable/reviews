@@ -57,7 +57,7 @@ const Review = db.define('review', {
     type: Sequelize.DATE,
   },
   review: {
-    type: Sequelize.STRING(1234),
+    type: Sequelize.STRING,
   },
   user_recommended: {
     type: Sequelize.BOOLEAN,
