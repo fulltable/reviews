@@ -67,9 +67,11 @@ const Review = db.define('review', {
 });
 
 User.hasMany(Review, { foreignKey: 'user_id' });
+Review.belongsTo(User, { foreignKey: 'user_id' });
 Restaurant.hasMany(Review, { foreignKey: 'restaurant_id' });
+Review.belongsTo(Restaurant, { foreignKey: 'restaurant_id' });
 
-db.sync(); // create the tables in the db with these models
+db.sync(); // on initial set up uncomment to create the tables in the db with these models
 
 module.exports = {
   Restaurant,

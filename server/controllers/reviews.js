@@ -1,3 +1,4 @@
+/*eslint-disable*/
 const Models = require('../../database/Models');
 
 module.exports = {
@@ -24,6 +25,7 @@ module.exports = {
   },
 
   get: function(req, res) {
+    console.log('got here')
     const { restaurant_id } = req.params;
     Models.Review.findAll({ where: { restaurant_id }, include: [Models.User] })
     .then(data => {
