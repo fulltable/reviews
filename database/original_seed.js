@@ -1,9 +1,8 @@
 const faker = require('faker');
-
 const db = require('./index.js');
 const Models = require('./Models');
 
-const seedRestaurants = function seedRestaurants() {
+const seedRestaurants = () => {
   for (let i = 0; i < 100; i += 1) {
     const restaurant_name = faker.lorem.word();
     Models.Restaurant.create({ restaurant_name })
@@ -11,7 +10,7 @@ const seedRestaurants = function seedRestaurants() {
   }
 };
 
-const seedUsernames = function seedUsernames() {
+const seedUsernames = () => {
   for (let i = 0; i < 400; i += 1) {
     const username = faker.name.firstName();
     const review_count = faker.random.number({
@@ -30,7 +29,7 @@ const seedUsernames = function seedUsernames() {
   }
 };
 
-const seedReviews = function seedReviews() {
+const seedReviews = () => {
   for (let i = 0; i < 300; i += 1) {
     const restaurant_id = faker.random.number({
       min: 1,
@@ -78,56 +77,7 @@ const seedReviews = function seedReviews() {
       .catch(err => console.error(err));
   }
 };
-
-const seedReviewsHigher = function seedReviewsHigher() {
-  for (let i = 0; i < 1000; i += 1) {
-    const restaurant_id = faker.random.number({
-      min: 1,
-      max: 100,
-    });
-    const user_id = faker.random.number({
-      min: 101,
-      max: 400,
-    });
-    const overall_score = faker.random.number({
-      min: 3,
-      max: 5,
-    });
-    const food_score = faker.random.number({
-      min: 3,
-      max: 5,
-    });
-    const service_score = faker.random.number({
-      min: 3,
-      max: 5,
-    });
-    const ambience_score = faker.random.number({
-      min: 3,
-      max: 5,
-    });
-    const value_score = faker.random.number({
-      min: 3,
-      max: 5,
-    });
-    const date_dined = faker.date.between('2015-01-01', '2019-03-31');
-    const review = faker.lorem.sentences();
-    const user_recommended = faker.random.boolean();
-    Models.Review.create({
-      restaurant_id,
-      user_id,
-      overall_score,
-      food_score,
-      service_score,
-      ambience_score,
-      value_score,
-      date_dined,
-      review,
-      user_recommended,
-    })
-      .catch(err => console.error(err));
-  }
-};
-
+// sync required if tables have not been created yet in db
 db.sync()
   .then(() => {
     seedRestaurants();

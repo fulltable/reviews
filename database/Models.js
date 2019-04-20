@@ -54,7 +54,7 @@ const Review = db.define('review', {
     isIn: [[1, 2, 3, 4, 5]],
   },
   date_dined: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
   },
   review: {
     type: Sequelize.STRING,
@@ -67,9 +67,9 @@ const Review = db.define('review', {
 });
 
 User.hasMany(Review, { foreignKey: 'user_id' });
-Review.belongsTo(User, { foreignKey: 'user_id' });
 Restaurant.hasMany(Review, { foreignKey: 'restaurant_id' });
-Review.belongsTo(Restaurant, { foreignKey: 'restaurant_id' });
+
+db.sync(); // create the tables in the db with these models
 
 module.exports = {
   Restaurant,
