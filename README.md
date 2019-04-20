@@ -18,9 +18,9 @@ Reviews backend for a restaurant booking app similar to OpenTable
  - `npm start` to start your server (set up to run on port 3001)
  #### Seeding a Postgres Database
  - Create csv files for the `users`, `restaurants`, and `reviews` tables by running `npm run generate-data:pg`
- - Insert the csv file into your postgres db
-  - In the postgres shell, connect to your database with `\c [database_name]`
-  - Copy the relevant csv file into your table with `\copy [table_name] FROM 'path/to/file.csv' WITH DELIMITER '[insert your delimiter]'`
+ - Insert the csv file into your postgres db:
+   - In the postgres shell, connect to your database with `\c [database_name]`
+   - Copy the relevant csv file into your table with `\copy [table_name] FROM 'path/to/file.csv' WITH DELIMITER '[insert your delimiter]'`
  - Note: The largest table will be approx 5GB with the provided seeding script so ensure you have space on your computer and you delete the csv file once you have transferred it into your database
 ## CRUD API
 #### Create 
