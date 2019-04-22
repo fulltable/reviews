@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const router = require('./router');
+const controllers = require('./controllers');
 
 const db = require('../database/index');
 
@@ -14,7 +14,10 @@ app.use(morgan('dev'));
 
 app.use('/restaurants/:id', express.static(path.join(__dirname, '/../client/dist')));
 
-app.use('/api/', router);
+app.get('/restaurants/:restaurant_id', controllers.get);
+app.post('/restaurants/:restaurant_id', controllers.post);
+app.patch('/reviews/:id', controllers.patch);
+app.delete('/reviews/:id', controllers.delete);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
