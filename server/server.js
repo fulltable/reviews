@@ -12,12 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.use('/restaurants/:id', express.static(path.join(__dirname, '/../client/dist')));
+app.use('/restaurants/:id', express.static('client/dist'));
+app.use('/', express.static('client/dist'));
 
-app.get('/restaurants/:restaurant_id', controllers.get);
-app.post('/restaurants/:restaurant_id', controllers.post);
-app.patch('/reviews/:id', controllers.patch);
-app.delete('/reviews/:id', controllers.delete);
+app.get('/api/restaurants/:restaurant_id', controllers.get);
+app.post('/api/restaurants/:restaurant_id', controllers.post);
+app.patch('/api/reviews/:id', controllers.patch);
+app.delete('/api/reviews/:id', controllers.delete);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

@@ -1,8 +1,4 @@
-import React from 'react';
-import {
-  BrowserRouter,
-  Route,
-} from 'react-router-dom';
+import React, { Fragment } from 'react';
 import ReviewList from './ReviewList.jsx'
 import RatingSummary from './RatingSummary.jsx'
 
@@ -16,6 +12,7 @@ class App extends React.Component {
       reviewsFiltered: false,
       filterScore: '',
     };
+    this.handleChartClick.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +24,8 @@ class App extends React.Component {
   }
 
   getReviews() {
-    fetch(`/api/restaurants/${this.state.restaurantId}`)
+    const { restaurantId } = this.state;
+    fetch(`/api/restaurants/${restaurantId}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
@@ -39,26 +37,23 @@ class App extends React.Component {
   }
 
   handleChartClick(e, clickScore) {
+    const {reviewsFiltered, origReviews, filterScore } = this.state;
     e.preventDefault();
-    if (this.state.reviewsFiltered) {
-      if (clickScore === this.state.filterScore) {
+    if (reviewsFiltered) {
+      if (clickScore === filterScore) {
         this.setState({
-          reviews: this.state.origReviews,
+          reviews: origReviews,
           reviewsFiltered: false,
         });
       } else {
         this.setState({
-          reviews: this.state.origReviews.filter((rev) => {
-            return rev.overall_score === clickScore;
-          }),
+          reviews: origReviews.filter(rev => rev.overall_score === clickScore),
           filterScore: clickScore,
         });
       }
     } else {
       this.setState({
-        reviews: this.state.origReviews.filter((rev) => {
-          return rev.overall_score === clickScore;
-        }),
+        reviews: origReviews.filter(rev => rev.overall_score === clickScore),
         reviewsFiltered: true,
         filterScore: clickScore,
       });
@@ -66,18 +61,16 @@ class App extends React.Component {
   }
 
   render() {
+    const { reviews, origReviews } = this.state;
     return (
-      <BrowserRouter>
-        <div>
-          <Route path="/api/reviews/:id/" component={ReviewList} />
-          <RatingSummary
-            reviews={this.state.reviews} 
-            origReviews={this.state.origReviews}
-            handleChartClick={this.handleChartClick.bind(this)} 
-          />
-          <ReviewList reviews={this.state.reviews} />
-        </div>
-      </BrowserRouter>
+      <Fragment>
+        <RatingSummary
+          reviews={reviews}
+          origReviews={origReviews}
+          handleChartClick={this.handleChartClick}
+        />
+        <ReviewList reviews={reviews} />
+      </Fragment>
     );
   }
 }
