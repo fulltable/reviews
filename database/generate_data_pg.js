@@ -1,7 +1,7 @@
 const faker = require('faker');
 const fs = require('fs');
 const moment = require('moment');
-const db = require('./index');
+const { pg } = require('./index');
 
 // manage build up of write stream buffer
 const writeNTimes = (writer, dataGenerator, encoding, callback, start, stop) => {

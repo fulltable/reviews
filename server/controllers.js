@@ -1,4 +1,4 @@
-const Models = require('../database/Models');
+const Models = require('../database/models/PGModels');
 
 module.exports.post = (req, res) => {
   const { restaurant_id } = req.params;
@@ -25,7 +25,7 @@ module.exports.post = (req, res) => {
 
 module.exports.get = (req, res) => {
   const { restaurant_id } = req.params;
-  Models.Review.findAll({ where: { restaurant_id }, include: [Models.User] })
+  Models.Review.findAll({ where: { restaurant_id } })
     .then((data) => {
       res.send(data);
     })
@@ -36,8 +36,8 @@ module.exports.get = (req, res) => {
 };
 
 module.exports.patch = (req, res) => {
-  const { id } = req.params;
-  Models.Review.update(req.body, { where: { id } })
+  const { review_id } = req.params;
+  Models.Review.update(req.body, { where: { review_id } })
     .then(() => res.send('updated'))
     .catch((err) => {
       console.log(err);
@@ -46,8 +46,8 @@ module.exports.patch = (req, res) => {
 }
 
 module.exports.delete = (req, res) => {
-  const { id } = req.params;
-  Models.Review.destroy({ where: { id } })
+  const { review_id } = req.params;
+  Models.Review.destroy({ where: { review_id } })
     .then(() => res.send('deleted'))
     .catch((err) => {
       console.log(err);

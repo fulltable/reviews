@@ -17,8 +17,8 @@ app.use('/', express.static('client/dist'));
 
 app.get('/api/restaurants/:restaurant_id', controllers.get);
 app.post('/api/restaurants/:restaurant_id', controllers.post);
-app.patch('/api/reviews/:id', controllers.patch);
-app.delete('/api/reviews/:id', controllers.delete);
+app.patch('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.patch);
+app.delete('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.delete);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
