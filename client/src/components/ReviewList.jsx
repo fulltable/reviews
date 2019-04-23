@@ -13,7 +13,10 @@ const ReviewList = ({ reviews }) => (
         valueScore={review.value_score}
         dateDined={review.date_dined}
         review={review.review}
-        userData={review.user}
+        username={review.username}
+        vip={review.vip}
+        location={review.location}
+        reviewCount={review.reviewCount}
       />
     ))}
   </div>

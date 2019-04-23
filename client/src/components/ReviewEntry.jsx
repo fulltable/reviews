@@ -3,7 +3,7 @@ import moment from 'moment';
 import '../styles/reviewStyle.css';
 import UserEntry from './UserEntry.jsx';
 
-const ReviewEntry = ({ userData, overallScore, foodScore, serviceScore, ambienceScore, dateDined, review }) => {
+const ReviewEntry = ({ overallScore, foodScore, serviceScore, ambienceScore, dateDined, review, username, vip, location, reviewCount }) => {
   const redstar = 'https://s3-us-west-1.amazonaws.com/open-tabs-reviews/images/redstar.png';
   const graystar = 'https://s3-us-west-1.amazonaws.com/open-tabs-reviews/images/graystar.png';
   const red = <span className="reviews-review-stars"><img src={redstar} alt="red star" height="16" width="auto" /></span>;
@@ -21,7 +21,12 @@ const ReviewEntry = ({ userData, overallScore, foodScore, serviceScore, ambience
   return (
     <div className="reviews-container">
       <div className="reviews-user-cell">
-        <UserEntry userData={userData} />
+        <UserEntry
+          username={username}
+          vip={vip}
+          location={location}
+          reviewCount={reviewCount}
+        />
       </div>
       <div>
         <span>{starCounts}</span>
