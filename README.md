@@ -20,7 +20,6 @@ Reviews backend for a restaurant booking app similar to OpenTable
 ## CRUD API
 #### Create 
 Write a review for a restaurant with a `POST` request to `api/restaurants/[restaurant_id]`. Place your review in the body of the request using the following parameters:
- - user_id: number
  - overall_score: number (1-5)
  - food_score: number (1-5)
  - service_score: number (1-5)
@@ -28,6 +27,7 @@ Write a review for a restaurant with a `POST` request to `api/restaurants/[resta
  - value_score: number (1-5)
  - date_dined: date
  - review: string
+ - username: string
  - user_recommended: boolean
 
 Note: Request body must be type `application/json`
@@ -36,11 +36,11 @@ Note: Request body must be type `application/json`
 Fetch all the reviews for a restaurant with a `GET` request to `api/restaurants/[restaurant_id]`.
 
 #### Update
-Change a review with a `PATCH` request to `api/reviews/[review_id]`.
+Change a review with a `PATCH` request to `api/restaurants/[restaurant_id]/reviews/[review_id]`.
 In JSON format, pass into the request body any of the review parameters you want to change.
 
 #### Delete
-Remove a review with a `DELETE` request to `api/reviews/[review_id]`.
+Remove a review with a `DELETE` request to `api/restaurants/[restaurant_id]/reviews/[review_id]`.
 
 ## Requirements
 
