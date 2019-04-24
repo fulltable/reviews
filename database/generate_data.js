@@ -31,6 +31,8 @@ const writeNTimes = (writer, dataGenerator, db, encoding, callback, start, stop)
 };
 
 const createReview = (i, db) => {
+  const id = (db === 'pg') ? i : cassandra.timeuuid();
+  const restaurant_id = Math.floor(Math.random() * 10000000) + 1;
   const overall_score = Math.floor(Math.random() * 5) + 1;
   const food_score = Math.floor(Math.random() * 5) + 1;
   const service_score = Math.floor(Math.random() * 5) + 1;
@@ -41,51 +43,31 @@ const createReview = (i, db) => {
   const user_recommended = faker.random.boolean();
   const username = faker.name.firstName();
   const review_count = Math.floor(Math.random() * 50) + 1;
-  const vip = faker.random.boolean();
   const location = faker.address.country();
-  const restaurant_id = Math.floor(Math.random() * 10000000) + 1;
-  const id = (db === 'pg') ? i : cassandra.timeuuid();
+  const vip = faker.random.boolean();
 
   const reviewData = [];
 
-  if (db === 'pg') {
-    reviewData.push(
-      id,
-      restaurant_id,
-      overall_score,
-      food_score,
-      service_score,
-      ambience_score,
-      value_score,
-      date_dined,
-      user_recommended,
-      review,
-      username,
-      review_count,
-      location,
-      vip
-    );
-  } else {
-    reviewData.push(
-      restaurant_id, // partition key for cassandra
-      id, // clustering key for cassandra
-      ambience_score,
-      date_dined,
-      food_score,
-      location,
-      overall_score,
-      review,
-      review_count,
-      service_score,
-      user_recommended,
-      username,
-      value_score,
-      vip
-    );
-  }
+  reviewData.push(
+    id,
+    restaurant_id,
+    overall_score,
+    food_score,
+    service_score,
+    ambience_score,
+    value_score,
+    date_dined,
+    user_recommended,
+    review,
+    username,
+    review_count,
+    location,
+    vip
+  );
+
   return reviewData.join('@');
 };
 
-const reviewsWriteStream = fs.createWriteStream('reviews_pg.csv');
+const reviewsWriteStream = fs.createWriteStream('reviews.csv');
 
-writeNTimes(reviewsWriteStream, createReview, 'ca', 'utf8', () => console.log('created reviews'), 10);
+writeNTimes(reviewsWriteStream, createReview, 'pg', 'utf8', () => console.log('created reviews'), 10);
