@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const pg = new Sequelize(
+const db = new Sequelize(
   'fulltable',
   'evankaplan',
   '',
@@ -9,4 +9,4 @@ const pg = new Sequelize(
   }
 );
 
-module.exports.pg = pg;
+module.exports = db;

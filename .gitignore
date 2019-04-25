@@ -9,3 +9,8 @@ node_modules/
 
 ## environment variables ##
 .env
+
+## seeding files ##
+reviews.csv
+users.csv
+restaurants.csv

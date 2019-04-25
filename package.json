@@ -11,7 +11,6 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/server.js",
     "test": "jest",
-    "seed": "node database/seed.js",
     "generate-data:pg": "node database/generate_data_pg.js"
   },
   "dependencies": {
@@ -25,7 +24,6 @@
     "faker": "^4.1.0",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
-    "pg": "^7.10.0",
     "promise": "^8.0.3",
     "radium": "^0.25.1",
     "radium-grid": "^2.0.3",
@@ -41,6 +39,7 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "artillery": "^1.6.0-27",
     "babel-loader": "^8.0.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",

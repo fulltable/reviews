@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { pg } = require('../index');
+const { pg } = require('./index');
 
 const Review = pg.define('review', {
   id: {
