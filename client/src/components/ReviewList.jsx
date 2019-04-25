@@ -16,7 +16,7 @@ const ReviewList = ({ reviews }) => (
         username={review.username}
         vip={review.vip}
         location={review.location}
-        reviewCount={review.reviewCount}
+        reviewCount={review.review_count}
       />
     ))}
   </div>
