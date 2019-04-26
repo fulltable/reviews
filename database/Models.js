@@ -1,10 +1,12 @@
+/* create the database fulltable first before running this script */
+/* set up foreign keys (see below) after seeding to improve seeding performance */
+
 const Sequelize = require('sequelize');
-const db = require('../database/index');
+const db = require('./index');
 
 const Restaurant = db.define('restaurant', {
   restaurant_name: {
     type: Sequelize.STRING,
-    allowNull: false,
   },
 }, {
   timestamps: false,
@@ -20,7 +22,7 @@ const User = db.define('user', {
   location: {
     type: Sequelize.STRING,
   },
-  VIP: {
+  vip: {
     type: Sequelize.BOOLEAN,
   },
 }, {
@@ -54,7 +56,7 @@ const Review = db.define('review', {
     isIn: [[1, 2, 3, 4, 5]],
   },
   date_dined: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
   },
   review: {
     type: Sequelize.STRING,
@@ -66,10 +68,13 @@ const Review = db.define('review', {
   timestamps: false,
 });
 
+// comment out foreign key references below while seeding
 User.hasMany(Review, { foreignKey: 'user_id' });
 Review.belongsTo(User, { foreignKey: 'user_id' });
 Restaurant.hasMany(Review, { foreignKey: 'restaurant_id' });
 Review.belongsTo(Restaurant, { foreignKey: 'restaurant_id' });
+
+db.sync();
 
 module.exports = {
   Restaurant,

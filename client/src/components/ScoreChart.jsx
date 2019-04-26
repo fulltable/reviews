@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/scoreChart.css';
 
 const ScoreChart = ({ scores, origReviews, handleChartClick }) => {
 

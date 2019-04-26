@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/summaryStyle.css';
 import ScoreChart from './ScoreChart.jsx';
 
 const RatingSummary = (props) => {
