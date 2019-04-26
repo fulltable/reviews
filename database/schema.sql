@@ -38,4 +38,10 @@ SELECT setval('reviews_id_seq', 100000000);
 SELECT setval('restaurants_id_seq', 10000000);
 SELECT setval('users_id_seq', 10000000);
 
+Create Indexes to speed up queries:
+
+CREATE INDEX idx_restaurant_id ON reviews(restaurant_id);
+CREATE INDEX idx_restaurant_name ON restaurants(restaurant_name);
+CREATE INDEX idx_user_name ON users(username);
+
 */
