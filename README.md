@@ -36,11 +36,11 @@ Note: Request body must be type `application/json`
 Fetch all the reviews for a restaurant with a `GET` request to `api/restaurants/[restaurant_id]`.
 
 #### Update
-Change a review with a `PATCH` request to `api/restaurants/[restaurant_id]/reviews/[review_id]`.
+Change a review with a `PATCH` request to `api/reviews/[review_id]`.
 In JSON format, pass into the request body any of the review parameters you want to change.
 
 #### Delete
-Remove a review with a `DELETE` request to `api/restaurants/[restaurant_id]/reviews/[review_id]`.
+Remove a review with a `DELETE` request to `api/reviews/[review_id]`.
 
 ## Requirements
 
