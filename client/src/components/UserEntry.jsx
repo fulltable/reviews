@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/reviewStyle.css';
 
 const UserEntry = ({ username, vip, location, reviewCount }) => {
   const initials = username.substring(0, 2);

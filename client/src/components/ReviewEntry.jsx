@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import '../styles/reviewStyle.css';
 import UserEntry from './UserEntry.jsx';
 
 const ReviewEntry = ({ overallScore, foodScore, serviceScore, ambienceScore, dateDined, review, username, vip, location, reviewCount }) => {
