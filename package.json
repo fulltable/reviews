@@ -11,7 +11,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/server.js",
     "test": "jest",
-    "generate-data:pg": "node database/generate_data_pg.js"
+    "generate-data": "node database/generate_data.js"
   },
   "dependencies": {
     "babel-eslint": "^10.0.1",

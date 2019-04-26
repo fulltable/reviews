@@ -93,6 +93,8 @@ const reviewsWriteStream = fs.createWriteStream('reviews.csv');
 const usersWriteStream = fs.createWriteStream('users.csv');
 const restaurantsWriteStream = fs.createWriteStream('restaurants.csv');
 
+
+// initial seeding parameters below, alter start and stop values to increase number of records generated
 writeNTimes(reviewsWriteStream, createReview, 'utf8', () => console.log('created reviews'), 10000000);
 writeNTimes(usersWriteStream, createUser, 'utf8', () => console.log('created users'), 10000000);
 writeNTimes(restaurantsWriteStream, createRestaurant, 'utf8', () => console.log('created restaurants'), 10000000);
