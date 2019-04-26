@@ -25,7 +25,6 @@ Reviews backend for a restaurant booking app similar to OpenTable
 ## CRUD API
 #### Create 
 Write a review for a restaurant with a `POST` request to `api/restaurants/[restaurant_id]`. Place your review in the body of the request using the following parameters:
- - user_id: number
  - overall_score: number (1-5)
  - food_score: number (1-5)
  - service_score: number (1-5)
@@ -33,6 +32,7 @@ Write a review for a restaurant with a `POST` request to `api/restaurants/[resta
  - value_score: number (1-5)
  - date_dined: date
  - review: string
+ - username: string
  - user_recommended: boolean
 
 Note: Request body must be type `application/json`
