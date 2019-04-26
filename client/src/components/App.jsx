@@ -25,7 +25,7 @@ class App extends React.Component {
 
   getReviews() {
     const { restaurantId } = this.state;
-    fetch(`/api/restaurants/${restaurantId}`)
+    fetch(`/api/restaurants/${restaurantId}/reviews`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
