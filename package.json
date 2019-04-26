@@ -1,10 +1,10 @@
 {
   "name": "reviews",
-  "description": "> Project description",
-  "author": "",
+  "description": "Reviews module for restaurant booking app",
+  "author": "evsk",
   "license": "ISC",
   "engines": {
-    "node": ">=6.13.0"
+    "node": ">=11.11.0"
   },
   "scripts": {
     "start": "node server/server.js",
@@ -20,18 +20,12 @@
     "dotenv": "^7.0.0",
     "eslint-plugin-jest": "^22.4.1",
     "express": "^4.16.4",
-    "express-cassandra": "^2.3.0",
     "faker": "^4.1.0",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "promise": "^8.0.3",
-    "radium": "^0.25.1",
-    "radium-grid": "^2.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0",
-    "reactstrap": "^8.0.0",
     "sequelize": "^5.7.4",
     "style-loader": "^0.23.1"
   },
@@ -45,7 +39,6 @@
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.3",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
