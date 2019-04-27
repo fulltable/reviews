@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const controllers = require('./controllers');
@@ -20,5 +21,3 @@ app.delete('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.del
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-module.exports = app;
