@@ -2,7 +2,7 @@ const faker = require('faker');
 const moment = require('moment');
 
 const generateRestaurantId = (context, events, done) => {
-  const restaurantId = Math.floor(Math.random() * 10000000) + 1;
+  const restaurantId = Math.floor(Math.random() * 1000000) + 9000000; // select from 10% of db records
   context.vars.restaurantId = restaurantId;
   return done();
 }

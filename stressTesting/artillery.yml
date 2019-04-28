@@ -1,8 +1,8 @@
 config:
   target: 'http://localhost:3001'
   phases:
-    - duration: 60
-      arrivalRate: 200
+    - duration: 360
+      arrivalRate: 1000
   processor: "./stressTestFunctions.js"
 scenarios:
   - name: "fetch reviews for a restaurant"
@@ -10,21 +10,21 @@ scenarios:
     - function: "generateRestaurantId"
     - get:
         url: "/api/restaurants/{{ restaurantId }}/reviews"
-  #   - log: "Sent a request to /restaurants with restaurantId {{ restaurantId }}"
-  # - name: "post review to a restaurant"
-  #   flow:
-  #   - function: "generateRestaurantId"
-  #   - function: "setRequestBody"
-  #   - post:
-  #       url: "/api/restaurants/{{ restaurantId }}/reviews"
-  #       json:
-  #         user_id: "{{ user_id }}"
-  #         overall_score: "{{ overall_score }}"
-  #         food_score: "{{ food_score }}"
-  #         service_score: "{{ service_score }}"
-  #         ambience_score: "{{ ambience_score }}"
-  #         value_score: "{{ value_score }}"
-  #         date_dined: "{{ date_dined }}"
-  #         review: "{{ review }}"
-  #         user_recommended: "{{ user_recommended }}"
+   - log: "Sent a request to /restaurants with restaurantId {{ restaurantId }}"
+  - name: "post review to a restaurant"
+    flow:
+    - function: "generateRestaurantId"
+    - function: "setRequestBody"
+    - post:
+        url: "/api/restaurants/{{ restaurantId }}/reviews"
+        json:
+          user_id: "{{ user_id }}"
+          overall_score: "{{ overall_score }}"
+          food_score: "{{ food_score }}"
+          service_score: "{{ service_score }}"
+          ambience_score: "{{ ambience_score }}"
+          value_score: "{{ value_score }}"
+          date_dined: "{{ date_dined }}"
+          review: "{{ review }}"
+          user_recommended: "{{ user_recommended }}"
 

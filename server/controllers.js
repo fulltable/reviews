@@ -53,7 +53,6 @@ module.exports.delete = (req, res) => {
   const { review_id } = req.params;
   db.query('SELECT user_id FROM reviews where id = ?;', { replacements: [review_id] })
     .then((result) => {
-      console.log(result[0]);
       db.query('UPDATE users SET review_count = review_count - 1 WHERE id = ?', { replacements: [result[0][0].user_id] }); // index into result object
     })
     .then(() => {
