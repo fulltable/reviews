@@ -4,7 +4,6 @@
 
 ## NPM ##
 npm
-npm-debug.log
 node_modules/
 
 ## environment variables ##
@@ -17,3 +16,8 @@ restaurants.csv
 
 ## keys ##
 aws-keys.json
+newrelic.js
+
+## logs ##
+newrelic_agent.log
+npm-debug.log

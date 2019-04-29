@@ -12,13 +12,11 @@ app.use(morgan('dev'));
 app.use('/restaurants/:id', express.static('client/dist'));
 app.use('/', express.static('client/dist'));
 
-app.post('/api/restaurants/:restaurant_id', controllers.post);
-app.get('/api/restaurants/:restaurant_id', controllers.get);
-app.patch('/api/reviews/:review_id', controllers.patch);
-app.delete('/api/reviews/:review_id', controllers.delete);
+app.post('/api/restaurants/:restaurant_id/reviews', controllers.post);
+app.get('/api/restaurants/:restaurant_id/reviews', controllers.get);
+app.patch('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.patch);
+app.delete('/api/restaurants/:restaurant_id/reviews/:review_id', controllers.delete);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-module.exports = app;
