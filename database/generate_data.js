@@ -89,7 +89,7 @@ const createUser = (id) => {
   return userData.join('@');
 };
 
-const reviewsWriteStream = fs.createWriteStream('reviews.csv');
+const reviewsWriteStream = fs.createWriteStream('reviewstwo.csv');
 const usersWriteStream = fs.createWriteStream('users.csv');
 const restaurantsWriteStream = fs.createWriteStream('restaurants.csv');
 
