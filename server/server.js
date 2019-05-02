@@ -7,7 +7,7 @@ const controllers = require('./controllers');
 const port = process.env.PORT || 3001;
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
