@@ -1,5 +1,14 @@
+const redis = require('redis');
 const db = require('../database/index');
 const Models = require('../database/Models');
+
+const client = redis.createClient({
+  password: process.env.DATABASE_PASSWORD
+});
+client.on('error', (err) => {
+  console.log("Error " + err);
+});
+client.on('ready', () => console.log('ready'));
 
 module.exports.post = (req, res) => {
   const { restaurant_id } = req.params;
@@ -29,14 +38,21 @@ module.exports.post = (req, res) => {
 
 module.exports.get = (req, res) => {
   const { restaurant_id } = req.params;
-  db.query('SELECT reviews.*, users.* FROM reviews INNER JOIN users ON reviews.user_id = users.id WHERE restaurant_id = ?;', { replacements: [restaurant_id] })
-    .then((data) => {
-      res.send(data[0]);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-    });
+  client.set(restaurant_id, (err, result) => {
+    if (result) {
+      res.send(JSON.parse(result));
+    } else {
+      db.query('SELECT reviews.*, users.* FROM reviews INNER JOIN users ON reviews.user_id = users.id WHERE restaurant_id = ?;', { replacements: [restaurant_id] })
+        .then((data) => {
+          client.set(restaurant_id, JSON.stringify(data[0])); // store in redis
+          res.send(data[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.sendStatus(500);
+        });
+    }
+  });
 };
 
 module.exports.patch = (req, res) => {
