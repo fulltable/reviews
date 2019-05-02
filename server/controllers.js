@@ -38,7 +38,7 @@ module.exports.post = (req, res) => {
 
 module.exports.get = (req, res) => {
   const { restaurant_id } = req.params;
-  client.set(restaurant_id, (err, result) => {
+  client.get(restaurant_id, (err, result) => {
     if (result) {
       res.send(JSON.parse(result));
     } else {
