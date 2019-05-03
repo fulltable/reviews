@@ -1,6 +1,7 @@
 require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 
 const controllers = require('./controllers');
 
@@ -14,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/restaurants/:id', express.static('client/dist'));
 app.use('/', express.static('client/dist'));
+
+app.get('/loaderio-3d3088ddc0ff5e3f736d9af2b3c81ff8/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/loaderio-3d3088ddc0ff5e3f736d9af2b3c81ff8.txt'));
+})
 
 app.post('/api/restaurants/:restaurant_id/reviews', controllers.post);
 app.get('/api/restaurants/:restaurant_id/reviews', controllers.get);
