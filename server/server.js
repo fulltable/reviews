@@ -1,13 +1,15 @@
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
+
 const controllers = require('./controllers');
 
 const port = process.env.PORT || 3001;
 const app = express();
 
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan('dev'));
 
 app.use('/restaurants/:id', express.static('client/dist'));
 app.use('/', express.static('client/dist'));

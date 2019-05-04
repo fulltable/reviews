@@ -1,4 +1,4 @@
-/* table schemas for referece */
+/* table schemas for reference */
 
 CREATE TABLE IF NOT EXISTS reviews (
   id SERIAL PRIMARY KEY,
@@ -33,12 +33,12 @@ Foreign key commands:
 ALTER TABLE reviews ADD CONSTRAINT restaurant_fk FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE;
 ALTER TABLE reviews ADD CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
 
-Update autoincrement values after seeding:
+Update autoincrement values after seeding if seeding did not increment primary keys:
 SELECT setval('reviews_id_seq', 100000000);
 SELECT setval('restaurants_id_seq', 10000000);
 SELECT setval('users_id_seq', 10000000);
 
-Create Indexes to speed up queries:
+Create indexes to speed up queries:
 
 CREATE INDEX idx_restaurant_id ON reviews(restaurant_id);
 CREATE INDEX idx_restaurant_name ON restaurants(restaurant_name);

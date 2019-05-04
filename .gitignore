@@ -13,6 +13,9 @@ node_modules/
 reviews.csv
 users.csv
 restaurants.csv
+reviews.gz
+restaurants.gz
+users.gz
 
 ## keys ##
 aws-keys.json
