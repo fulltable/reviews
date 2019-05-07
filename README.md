@@ -1,5 +1,5 @@
 # FullTable Reviews Module
-Reviews backend for a restaurant booking app similar to OpenTable
+Reviews backend for a restaurant booking app
 
 ## Related Projects
 
