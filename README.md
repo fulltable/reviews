@@ -1,5 +1,5 @@
-# FullTable Reviews Module
-Reviews backend for a restaurant booking app
+# FullTable Reviews 
+Reviews service scaled to production level traffic with Nginx and Redis Cache, deployed to Amazon EC2.
 
 ## Related Projects
 
